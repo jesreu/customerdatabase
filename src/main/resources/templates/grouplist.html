@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Grouplist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="col-md-4">
+		<h1>Groups</h1>
+	</div>
+    <table class="table table-striped">
+		<tr>
+		    <th>Name</th>
+		    <th>Customers by group</th>
+		</tr>  
+    	<tr th:each = "group : ${groups}">
+    		<td th:text="${group.name}"></td>
+    		<td><a th:href="@{/grouplist/{id}(id=${group.groupid})}">Customers</a></td>	
+    	</tr>  	
+     </table> 	
+     <a href="/customerlist" class="btn btn-success" >View Customers</a>
+     <a href="/addgroup" class="btn btn-success" >Add Group</a>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Customerlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<h1>Customers</h1>
+	</div>
+	<div>
+		<p th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]
+		<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out"/>
+		</form>
+		</p>
+	</div>
+    <table class="table table-striped">
+		<tr>
+		    <th>First name</th>
+		    <th>Last name</th>
+		    <th>Age</th>
+		    <th>Email</th>
+		    <th>Phone number</th>
+		    <th>Group</th>
+		    <th sec:authorize="hasAuthority('ADMIN')"></th>
+		    <th></th>
+		</tr>  
+    	<tr th:each = "customer : ${customers}">
+    		<td th:text="${customer.fname}"></td>
+    		<td th:text="${customer.lname}"></td>
+    		<td th:text="${customer.age}"></td>
+    		<td th:text="${customer.email}"></td>
+    		<td th:text="${customer.phone}"></td>
+    		<td th:text="${customer.group.name}"></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${customer.id})}">Delete</a></td>
+ 			<td><a th:href="@{/edit/{id}(id=${customer.id})}">Edit</a></td>	
+    	</tr>
+     </table> 	
+     <a href="/addcustomer" class="btn btn-success" >Add Customer</a>
+     <a href="/grouplist" class="btn btn-success" >View Groups</a>
+     <a href="/addgroup" class="btn btn-success" >Add Group</a>
+</body>
+</html>

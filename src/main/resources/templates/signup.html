@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add user</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+	<h1>Sign-up</h1>
+     <div class="col-md-4">
+		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+		<table>
+		<tr>
+		<td><label for="name">Username:</label><td>
+		<td><input type="text" th:field="*{username}" class="form-control"/><td>
+		<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+		</tr>
+		<tr>
+		<td><label for="name">Password:</label><td>
+		<td><input type="password" th:field="*{password}" class="form-control"/><td>
+		<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+		</tr>
+		<tr>
+		<td><label for="name">Re-type Password:</label><td>
+		<td><input type="password" th:field="*{passwordCheck}" class="form-control"/><td>
+		<td th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</td>
+		</tr>
+		</table>
+			<input type="submit" class="btn btn-primary" value="Signup"></input>		
+		</form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customerlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Customer</h1>
+	<div>
+		<form th:object="${customer}" th:action="@{../save}" action="#" method="post">
+		<table>
+		
+		<tr>
+		<td><label for="fname">First name</label><td>
+		<td><input type="text" id="fname" th:field="*{fname}"/><td>
+		<td th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}">Name Error</td>
+		</tr>
+		
+		<tr>
+		<td><label for="lname">Last name</label><td>
+		<td><input type="text" id="lname" th:field="*{lname}" /><td>
+		<td th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}">Type Error</td>
+		</tr>
+		
+		<tr>
+		<td><label for="age">Age</label><td>
+		<td><input type="text" id="age" min="0" th:field="*{age}" /><td>
+		<td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+		</tr>
+		
+		<tr>
+		<td><label for="email">Email</label><td>
+		<td><input type="text" id="email" th:field="*{email}" /><td>
+		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+		</tr>
+		
+		<tr>
+		<td><label for="phone">Phone</label><td>
+		<td><input type="text" id="phone"  th:field="*{phone}" /><td>
+		<td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
+		</tr>
+		
+		<tr>
+		<td><label for="grouplist">Group</label><td>
+		<td>
+		<select id="grouplist" th:field="*{group}" class="form-control">
+				<option th:each="group: ${groups}" th:value="${group.groupid}" th:text=${group.name}></option>
+		</select>
+		<td>
+		</tr>
+		</table>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

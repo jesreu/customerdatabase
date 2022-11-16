@@ -18,17 +18,4 @@ public class CustomerbaseApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerbaseApplication.class, args);
 	}
-
-	@Bean
-	public CommandLineRunner CmdRunner(CustomerRepository crepository,GroupRepository grepository) {
-		return (args) -> {
-			//tallennetaan hieman testidataa
-			//lisää ryhmän kanta-asiakas
-			Group group1 = new Group("Kanta-asiakas");
-			grepository.save(group1);
-			//lisää yhden asiakkaan
-			crepository.save(new Customer("Matti", "Meikäläinen", 22, "matti.meikalainen@gmail.com", "+358020202", group1));
-		};
-
-	}
 }

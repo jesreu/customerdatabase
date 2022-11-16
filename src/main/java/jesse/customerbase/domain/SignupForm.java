@@ -22,7 +22,7 @@ public class SignupForm {
 
     //pitää huolen että luotu käyttäjä on user roolissa
     @NotEmpty
-    private String role = "ADMIN";
+    private String role = "USER";
 
 	public String getUsername() {
 		return username;

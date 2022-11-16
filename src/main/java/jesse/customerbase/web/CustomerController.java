@@ -102,6 +102,14 @@ public class CustomerController {
 		return "addgroup";
 	}
 	
+	//Ryhmän poistamisen controlleri
+	@RequestMapping(value = "/deletegroup/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN')")
+    public String deleteGroup(@PathVariable("id") Long Id, Model model) {
+    	grepository.deleteById(Id);
+        return "redirect:/grouplist";
+    }
+	
 	// Ryhmän tallentamisen controlleri validoinilla
 	@RequestMapping(value = "/savegroup", method = RequestMethod.POST)
 	public String saveGroup(@Valid Group group, BindingResult bindingResult) {

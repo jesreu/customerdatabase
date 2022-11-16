@@ -13,10 +13,12 @@
 		<tr>
 		    <th>Name</th>
 		    <th>Customers by group</th>
+		    <th></th>
 		</tr>  
     	<tr th:each = "group : ${groups}">
     		<td th:text="${group.name}"></td>
-    		<td><a th:href="@{/grouplist/{id}(id=${group.groupid})}">Customers</a></td>	
+    		<td><a th:href="@{/grouplist/{id}(id=${group.groupid})}">Customers</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletegroup/{id}(id=${group.groupid})}">Delete</a></td>
     	</tr>  	
      </table> 	
      <a href="/customerlist" class="btn btn-success" >View Customers</a>

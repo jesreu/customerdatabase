@@ -81,7 +81,7 @@ public class CustomerController {
 	}
 	//Asiakkaan poistaminen, vaatiin poistettavan asiakkaan id:n ja Admin tason auktoriteetin
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
     public String deleteCustomer(@PathVariable("id") Long Id, Model model) {
     	crepository.deleteById(Id);
         return "redirect:/customerlist";

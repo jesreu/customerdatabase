@@ -50,7 +50,7 @@ public class UserController {
 		    	newUser.setPasswordHash(hashPassword);
 		    	newUser.setUsername(signupForm.getUsername());
 		    	//asettaa käyttäjänroolin (käyttäjä ei voi itse valita)
-		    	newUser.setRole("USER");
+		    	newUser.setRole("ADMIN");
 		    	if (repository.findByUsername(signupForm.getUsername()) == null) { //tarkistaa onko saman nimisiä käyttäjiä
 		    		//tallennetaan käyttäjä jos nimi on uniikki
 		    		repository.save(newUser);
